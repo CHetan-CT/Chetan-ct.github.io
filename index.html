@@ -45,143 +45,78 @@
                      s.parentNode.insertBefore(wzrk, s);
               })();
 
-            //   // document.getElementById("create-profile").onclick = function () { alert('hello!'); };
-            // $(document).ready(function(){
-            //     $('#create-profile').click(function(){
-            //     alert('hello!');
-            //     });
-            //   });
+            clevertap.notificationCallback = function(msg){
+          //raise the notification viewed and clicked events in the callback
+
+
+            clevertap.raiseNotificationViewed();
+            console.log(JSON.stringify(msg));//your custom rendering implementation here
+            var $button = jQuery("<button></button>");//element on whose click you want to raise the notification clicked event
+            $button.click(function(){
+               clevertap.raiseNotificationClicked();
+            });
+};
 
 </script>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
 </head>
 
 <body>
-
-    <!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->    
-   
-   
-    <!--====== PRELOADER PART START ======-->
-
-<!--     <div class="preloader">
-        <div class="loader">
-            <div class="ytp-spinner">
-                <div class="ytp-spinner-container">
-                    <div class="ytp-spinner-rotator">
-                        <div class="ytp-spinner-left">
-                            <div class="ytp-spinner-circle"></div>
-                        </div>
-                        <div class="ytp-spinner-right">
-                            <div class="ytp-spinner-circle"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!--====== PRELOADER PART ENDS ======-->
-    
-    <!--====== HEADER PART START ======-->
     
     <header class="header-area">
-
         <div id="home" class="header-hero bg_cover" style="background-image: url(assets/images/banner-bg.svg)">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="header-hero-content text-center">
-                            <h3 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.1s">Basic - SaaS Landing Page</h3>
-                            <h2 class="header-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">You are using free lite version</h2>
-                            <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.3s">Please, purchase full version of basic to get all features, sections and commercial use license</p>
-                        
+                            <h2 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.1s">CleverTap Web SDK Integration
+                            </h2>
+
+                            <div class="header-hero-image text-center wow fadeIn" data-wow-duration="1.3s" data-wow-delay="0.7s">
+                                <video width="600" height="450" autoplay loop muted id="home-banner-video">
+                                     <source src="https://d35fo82fjcw0y8.cloudfront.net/2019/10/08230731/homevideo-banner.mp4" type="video/mp4">
+                                 </video>
+
+                            </div> <!-- header hero image -->
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="brand-logo d-flex align-items-center justify-content-center justify-content-md-between">
                                            
-                                            <input type="button" value="Create Profile" id = "create-profile" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s"/>
+                                            <input type="button" value="Create User Profile" id = "create-profile" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s"/>
 
-                                            <input type="button" value="Show Push Notification" id = "show-push" class="main-btn wow fadeInUp"   data-wow-duration="1.3s" data-wow-delay="0.5s"/>
+                                            <input type="button" value="Allow Web Push" id = "allow-push" class="main-btn wow fadeInUp"   data-wow-duration="1.3s" data-wow-delay="0.5s"/>
 
-                                            <input type="button" value="Create Profile" id = "show-pop-up" class="main-btn wow fadeInUp"data-wow-duration="1.3s" data-wow-delay="0.5s"/>
-                                            
+                                            <input type="button" value="Show Web Push Notification" id = "show-push" class="main-btn wow fadeInUp"data-wow-duration="1.3s" data-wow-delay="0.5s"/>
+                                                    
                                         </div> <!-- brand logo -->
                                     </div>
                                 </div>   <!-- row -->
+
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="brand-logo d-flex align-items-center justify-content-center justify-content-md-between">
+                                                   
+                                            <input type="button" value="Show Box Pop Up" id = "box-pop-up" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s"/>
+
+                                            <input type="button" value="Show Banner Pop Up" id = "banner-pop-up" class="main-btn wow fadeInUp"   data-wow-duration="1.3s" data-wow-delay="0.5s"/>
+
+                                            <input type="button" value="Show Interstitial Pop Up" id = "interstitial-pop-up" class="main-btn wow fadeInUp"data-wow-duration="1.3s" data-wow-delay="0.5s"/>
+                                                    
+                                        </div> <!-- brand logo -->
+                                    </div>
+                                 </div>   <!-- row -->
                             </div> <!-- container -->
                         </div> <!-- header hero content -->
                     </div>
-                </div> <!-- row -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="header-hero-image text-center wow fadeIn" data-wow-duration="1.3s" data-wow-delay="0.7s">
-                            <img src="assets/images/header-hero.png" alt="hero">
-                        </div> <!-- header hero image -->
-                    </div>
-                </div> <!-- row -->
+                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- header hero -->
-
-
     </header>
-    
-    <!--====== HEADER PART ENDS ======-->
-    
-    <!--====== BRAMD PART START ======-->
-    
-   
-    
-    <!--====== ABOUT PART ENDS ======-->
-
-    
-    <!--====== ABOUT PART ENDS ======-->
-    
-    
-    <!--====== FOOTER PART START ======-->
-    
-
-    <!--====== BACK TOP TOP PART ENDS ======-->   
-    
-    <!--====== PART START ======-->
-    
-<!--
-    <section class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-"></div>
-            </div>
-        </div>
-    </section>
--->
-    
-    <!--====== PART ENDS ======-->
-
-    <div class="btn">CLOSE</div>
-
-    <script>
-    var btn = document.querySelector('.btn');
-    var wrapper = window.parent.document.getElementById('wizParDiv0');
-    btn.addEventListener('click', closePopUp);
-    function closePopUp()
-    { wrapper.remove(); }
-    </script>
-
-    <div class="btn">CLOSE</div>
-    <script>
-    var btn = document.querySelector('.btn');
-    var wrapper = window.parent.document.getElementById('wizParDiv2');
-    btn.addEventListener('click', closePopUp);
-    function closePopUp() { wrapper.remove(); }
-    </script>
 
     <!--====== Jquery js ======-->
     <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
@@ -226,9 +161,15 @@
     <script>
         document.getElementById("create-profile").addEventListener("click", pushProfile);
         
+        document.getElementById("allow-push").addEventListener("click", allowPush);
+        
         document.getElementById("show-push").addEventListener("click", showPush);
 
-        document.getElementById("show-pop-up").addEventListener("click", showPopUp);
+        document.getElementById("box-pop-up").addEventListener("click", showBoxPopUp);
+
+        document.getElementById("banner-pop-up").addEventListener("click", showBannerPopUp);
+
+        document.getElementById("interstitial-pop-up").addEventListener("click", showInterstitialPopUp);
 
         // document.getElementById("show-pop-up").addEventListener("click", showPopUp);
 
@@ -242,8 +183,9 @@
             });
         }
 
-        function showPush() {
-           // clevertap.event.push("Show Push");
+        function allowPush() {
+           clevertap.event.push("Allow Push");
+
            clevertap.notifications.push({
                 "titleText":'Would you like to receive Push Notifications?',
                 "bodyText":'We promise to only send you relevant content and give you updates on your transactions',
@@ -252,9 +194,21 @@
                 "okButtonColor":'#f28046'});
         }
 
-        function showPopUp() {
-           clevertap.event.push("Show Pop Up");
-        }
+        function showPush() {
+           clevertap.event.push("Show Push");
+       }
+
+        function showBoxPopUp() {
+           clevertap.event.push("Show Box Pop Up");
+       }
+
+        function showBannerPopUp() {
+           clevertap.event.push("Show Banner Pop Up");
+       }
+
+        function showInterstitialPopUp() {
+           clevertap.event.push("Show Interstitial Pop Up");
+       }
     </script>
     
 </body>
