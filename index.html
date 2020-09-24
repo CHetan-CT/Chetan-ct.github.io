@@ -43,17 +43,23 @@
                      wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
                      var s = document.getElementsByTagName('script')[0];
                      s.parentNode.insertBefore(wzrk, s);
+                     // console.log("Inside" , clevertap.getCleverTapID());
               })();
+                                          // myFunction()
 
-            // clevertap.notificationCallback = function(msg){
-            //   //raise the notification viewed and clicked events in the callback
-            //   clevertap.raiseNotificationViewed();
-            //   console.log(JSON.stringify(msg));//your custom rendering implementation here
-            //   var $button = jQuery("<button></button>");//element on whose click you want to raise the notification clicked event
-            //   $button.click(function(){
-            //      clevertap.raiseNotificationClicked();
-            // });
-            // };
+            setTimeout(myFunction, 3000);
+            function myFunction() {
+                console.log("Outside" , clevertap.getCleverTapID());
+            }
+            clevertap.notificationCallback = function(msg){
+      //raise the notification viewed and clicked events in the callback
+      clevertap.raiseNotificationViewed();
+      console.log(JSON.stringify(msg));//your custom rendering implementation here
+      var $button = jQuery("<button></button>");//element on whose click you want to raise the notification clicked event
+      $button.click(function(){
+         clevertap.raiseNotificationClicked();
+      });
+};
     </script>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
