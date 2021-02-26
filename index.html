@@ -51,6 +51,14 @@
             function myFunction() {
                 console.log("Outside" , clevertap.getCleverTapID());
             }
+
+
+            function updateEmail(email) {
+                clevertap.pushProfile(
+                  {"Site": { "Email": email }
+                }
+                  )
+            }
             // clevertap.notificationCallback = function(msg){
             //    //raise the notification viewed and clicked events in the callback
             //    clevertap.raiseNotificationViewed();
